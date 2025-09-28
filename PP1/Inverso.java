@@ -16,7 +16,6 @@ public class Inverso {
 
             int inverso = invertir(numero);
 
-
             System.out.println(numero + " → " + inverso);
 
         } catch (NumberFormatException e) {
