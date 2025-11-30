@@ -9,30 +9,48 @@ public class CustomQueue {
     public void enqueue(int index) {
         var node = new QueueNode(index);
 
-        // Actualizar
+        if (_head == null) {
+            _head = node; // primer elemento
+        } else {
+            // insertar al final
+            QueueNode current = _head;
+            while (current.getNext() != null) {
+                current = current.getNext();
+            }
+            current.setNext(node);
+        }
     }
 
     public int dequeue() {
         var index = -1;
 
-        // Actualizar
+        if (_head != null) {
+            index = _head.getIndex();
+            _head = _head.getNext(); // mover cabeza
+        }
 
         return index;
     }
 
     public int getSize() {
         var size = 0;
+        var current = _head;
 
-        // Actualizar
+        while (current != null) {
+            size++;
+            current = current.getNext();
+        }
 
         return size;
     }
 
     public String getIndexes() {
         var builder = new StringBuilder();
+
         for (var index = dequeue(); index > -1; index = dequeue()) {
             builder.append(" " + index);
         }
+
         return builder.toString();
     }
 }

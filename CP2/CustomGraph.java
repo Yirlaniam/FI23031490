@@ -17,8 +17,11 @@ public class CustomGraph {
     private void addEdge(char source, char target) {
         int src = Arrays.binarySearch(_chars, source);
         int tgt = Arrays.binarySearch(_chars, target);
-        
+
         // Actualizar
+        if (src >= 0 && tgt >= 0) {
+            _matrix[src][tgt]++;
+        }
     }
 
     public String getMatrix() {

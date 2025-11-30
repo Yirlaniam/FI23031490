@@ -9,32 +9,41 @@ public class CustomStack {
     public void push(String word) {
         var node = new StackNode(word);
 
-        // Actualizar
-
+        // Insertar al inicio (top)
+        node.setNext(_head);
         _head = node;
     }
 
     public String pop() {
         String word = null;
 
-        // Actualizar
+        if (_head != null) {
+            word = _head.getWord();
+            _head = _head.getNext(); // mover cabeza
+        }
 
         return word;
     }
 
     public int size() {
         var length = 0;
+        var current = _head;
 
-        // Actualizar
+        while (current != null) {
+            length++;
+            current = current.getNext();
+        }
 
         return length;
     }
 
     public String getWords() {
         var builder = new StringBuilder("(" + size() + ") [");
+
         for (var word = pop(); word != null; word = pop()) {
             builder.append(" " + word);
         }
+
         builder.append(" ]");
         return builder.toString();
     }
